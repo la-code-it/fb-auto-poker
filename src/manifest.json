@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Facebook Auto Poke Back",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Automatically responds to Facebook pokes by clicking 'Poke Back' buttons on the pokes page. Configurable check interval (1-300 seconds). Simple, lightweight automation for Facebook poke interactions.",
   "short_name": "Auto Poke Back",
   "author": "mfg",

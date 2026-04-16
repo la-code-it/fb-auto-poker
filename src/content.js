@@ -8,42 +8,23 @@
     let intervalId = null;
     let currentDelay = 5000; // Default 5 seconds in milliseconds
     
+    function GetPokeButtons() {
+        const pokeButtons = [...document.querySelectorAll('div[role="button"][aria-label="Poke back"]')];
+        return pokeButtons;
+    }
+
     // Function to find and click "Poke Back" buttons
     function pokeBack() {
         // Your original code with improvements
         const divs = document.querySelectorAll("div");
         let pokedCount = 0;
-        
-        // console.log(`📊 Found ${divs.length} div elements to check`);
-        
-        // Find all potential "Poke Back" buttons
-        const pokeBackCandidates = [];
-        
-        divs.forEach((div, index) => {
-            const text = div.textContent ? div.textContent.trim() : '';
-            const hasButtonRole = div.getAttribute('role') === 'button';
-            
-            // Check for exact text match, button role, and make sure the element is visible
-            if (text === "Poke Back" && hasButtonRole && div.offsetParent !== null) {
-                pokeBackCandidates.push({ element: div, index: index + 1 });
-            }
-        });
-        
-        
-        // Filter out nested elements - only keep the outermost ones
-        const uniquePokeButtons = pokeBackCandidates.filter(candidate => {
-            // Check if this element is contained within any other candidate
-            return !pokeBackCandidates.some(otherCandidate => {
-                return otherCandidate.element !== candidate.element && 
-                       otherCandidate.element.contains(candidate.element);
-            });
-        });
-        console.log(`Found ${uniquePokeButtons.length} out of ${pokeBackCandidates.length}  "Poke Back" buttons`);
 
-        // Click only the unique, outermost buttons
-        uniquePokeButtons.forEach(button => {
-            console.log(`Clicking unique "Poke Back" button (element ${button.index})`);
-            button.element.click();
+        const pokeButtons = GetPokeButtons();
+        console.log(`Found ${pokeButtons.length} "Poke Back" buttons using optimized selector`);
+
+        pokeButtons.forEach(button => {
+            console.log(`Clicking "Poke Back" button (element ${button.index})`);
+            button.click();
             pokedCount++;
         });
         
